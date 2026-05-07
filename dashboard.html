@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard – GrantReviewPro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<link rel="stylesheet" href="assets/css/dashboard.css"/>
+</head>
+<body class="bg-2">
+
+<div class="dash-layout">
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="dash-sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <span class="sidebar-logo-text">GrantReview<span style="color:var(--secondary)">Pro</span></span>
+      </a>
+      <button class="sidebar-toggle" id="sidebar-toggle-btn" title="Toggle Sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-section">Main Menu</div>
+      <a href="#" class="sidebar-nav-item active">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span class="sidebar-nav-label">Overview</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span class="sidebar-nav-label">My Proposals</span>
+        <span class="sidebar-nav-badge">3</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="sidebar-nav-label">Schedule</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="sidebar-nav-label">Messages</span>
+        <span class="sidebar-nav-badge" style="background:var(--secondary)">2</span>
+      </a>
+
+      <div class="sidebar-nav-section">Account</div>
+      <a href="#" class="sidebar-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="sidebar-nav-label">Profile</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="sidebar-nav-label">Settings</span>
+      </a>
+      <a href="index.html" class="sidebar-nav-item" style="margin-top:auto;color:#EF4444">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span class="sidebar-nav-label">Logout</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="avatar" style="background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;flex-shrink:0">MJ</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name">Maria Johnson</div>
+        <div class="sidebar-user-role">Premium Member</div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content -->
+  <main class="dash-main" id="dash-main">
+    <header class="dash-header">
+      <div class="dash-header-left">
+        <button class="dash-hamburger" id="dash-hamburger">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="dash-breadcrumb">Pages / <span style="color:var(--text-primary);font-weight:600">Overview</span></div>
+      </div>
+      
+      <div class="dash-header-right">
+        <div class="search-box" style="position:relative;display:none;@media(min-width:768px){display:block}">
+          <input type="text" class="form-control" placeholder="Search proposals..." style="padding-left:36px;width:240px;height:38px;font-size:.85rem"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:12px;top:11px;color:var(--text-muted)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        
+        <button class="dash-icon-btn" data-theme-toggle title="Toggle theme">
+          <span class="theme-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+        
+        <button class="dash-icon-btn" title="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+        
+        <div class="avatar" style="width:38px;height:38px;background:var(--bg-3);border:1px solid var(--border);cursor:pointer">MJ</div>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <div class="flex-between mb-24" style="align-items:flex-end">
+        <div>
+          <h2 style="margin-bottom:4px">Welcome back, Maria!</h2>
+          <p class="text-muted" style="font-size:.9rem">Here's what's happening with your grant proposals today.</p>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('upload-input').click()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          New Submission
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <div class="stat-icon stat-icon-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="stat-trend trend-up">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+              12%
+            </div>
+          </div>
+          <div class="stat-value">08</div>
+          <div class="stat-label">Total Proposals</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <div class="stat-icon stat-icon-amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-trend trend-up" style="color:var(--text-muted)">
+              Stable
+            </div>
+          </div>
+          <div class="stat-value">02</div>
+          <div class="stat-label">Pending Reviews</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <div class="stat-icon stat-icon-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="stat-trend trend-up">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+              5.4%
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <div class="score-ring" style="--pct: 84; width:60px; height:60px">
+              <div class="score-ring-value" style="font-size:.9rem">84</div>
+            </div>
+            <div>
+              <div class="stat-value" style="font-size:1.5rem">84%</div>
+              <div class="stat-label">Average Score</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card-top">
+            <div class="stat-icon stat-icon-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="stat-trend trend-up">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+              $12k
+            </div>
+          </div>
+          <div class="stat-value">$1.2M</div>
+          <div class="stat-label">Funding Secured</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="grid-template-columns: 2fr 1fr; gap:24px; align-items: flex-start">
+        <!-- Recent Proposals -->
+        <div class="card" style="padding:0; overflow:hidden">
+          <div class="flex-between p-24">
+            <h3 style="font-size:1.1rem">Recent Proposals</h3>
+            <a href="#" class="btn btn-sm btn-outline">View All</a>
+          </div>
+          
+          <div class="proposal-table">
+            <div class="proposal-table-header">
+              <div>Proposal Name</div>
+              <div>Status</div>
+              <div>Submitted</div>
+              <div>Score</div>
+              <div>Action</div>
+            </div>
+            
+            <div class="proposal-row">
+              <div>
+                <div class="proposal-title">Youth Workforce Initiative</div>
+                <div class="proposal-org">Department of Labor (ETA)</div>
+              </div>
+              <div><span class="badge badge-success">Reviewed</span></div>
+              <div class="proposal-org">Oct 12, 2026</div>
+              <div style="font-weight:700;color:var(--secondary-dark)">84/100</div>
+              <div><button class="btn btn-sm btn-secondary">Report</button></div>
+            </div>
+            
+            <div class="proposal-row">
+              <div>
+                <div class="proposal-title">Community Health Outreach</div>
+                <div class="proposal-org">Robert Wood Johnson Fdn</div>
+              </div>
+              <div><span class="badge" style="background:rgba(245,158,11,.1);color:#B45309">In Progress</span></div>
+              <div class="proposal-org">Oct 15, 2026</div>
+              <div style="font-weight:700;color:var(--text-muted)">--</div>
+              <div><button class="btn btn-sm btn-outline" disabled>Pending</button></div>
+            </div>
+            
+            <div class="proposal-row">
+              <div>
+                <div class="proposal-title">After-School Literacy Program</div>
+                <div class="proposal-org">Local Education Foundation</div>
+              </div>
+              <div><span class="badge badge-success">Reviewed</span></div>
+              <div class="proposal-org">Sep 28, 2026</div>
+              <div style="font-weight:700;color:var(--secondary-dark)">91/100</div>
+              <div><button class="btn btn-sm btn-secondary">Report</button></div>
+            </div>
+
+            <div class="proposal-row">
+              <div>
+                <div class="proposal-title">Sustainable Urban Farming</div>
+                <div class="proposal-org">USDA NIFA</div>
+              </div>
+              <div><span class="badge badge-success">Reviewed</span></div>
+              <div class="proposal-org">Sep 20, 2026</div>
+              <div style="font-weight:700;color:var(--primary)">78/100</div>
+              <div><button class="btn btn-sm btn-secondary">Report</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Help -->
+        <div style="display:flex; flex-direction:column; gap:24px">
+          <!-- Upload Box -->
+          <div class="card">
+            <h4 style="margin-bottom:16px">Quick Upload</h4>
+            <div class="upload-zone" id="dash-upload-zone">
+              <input type="file" id="upload-input" hidden accept=".pdf,.doc,.docx"/>
+              <div class="upload-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <p style="font-size:.9rem;font-weight:600;margin-bottom:4px">Drag & drop proposal</p>
+              <p class="upload-info" style="font-size:.75rem;color:var(--text-muted)">PDF or Word (max 10MB)</p>
+            </div>
+          </div>
+
+          <!-- Messages -->
+          <div class="card">
+            <div class="flex-between mb-16">
+              <h4 style="margin:0">Recent Messages</h4>
+              <span class="badge badge-success">2 New</span>
+            </div>
+            <div class="messages-preview" style="display:flex;flex-direction:column;gap:12px">
+              <div class="message-preview-item" style="display:flex;gap:12px;padding:12px;background:var(--bg-2);border-radius:var(--radius-md);border:1px solid var(--border)">
+                <div class="avatar" style="width:32px;height:32px;font-size:.7rem;background:var(--primary);color:#fff">JD</div>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+                    <span style="font-weight:700;font-size:.8rem">John Dorsey</span>
+                    <span style="font-size:.65rem;color:var(--text-muted)">10:42 AM</span>
+                  </div>
+                  <p style="font-size:.75rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-secondary)">"The budget section looks much better now. Just one minor..."</p>
+                </div>
+              </div>
+              <div class="message-preview-item" style="display:flex;gap:12px;padding:12px;border:1px solid var(--border);border-radius:var(--radius-md)">
+                <div class="avatar" style="width:32px;height:32px;font-size:.7rem;background:var(--secondary);color:#fff">AS</div>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+                    <span style="font-weight:700;font-size:.8rem">Admin Support</span>
+                    <span style="font-size:.65rem;color:var(--text-muted)">Yesterday</span>
+                  </div>
+                  <p style="font-size:.75rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-secondary)">Your subscription has been successfully renewed.</p>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline btn-sm w-full" style="margin-top:16px;justify-content:center">View All Messages</a>
+          </div>
+
+          <!-- Consultant -->
+          <div class="card" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border:none">
+            <div style="display:flex;gap:12px;margin-bottom:16px">
+              <div class="avatar" style="width:48px;height:48px;background:rgba(255,255,255,.2)">JD</div>
+              <div>
+                <div style="font-weight:700">John Dorsey</div>
+                <div style="font-size:.75rem;opacity:.8">Senior Grant Reviewer</div>
+              </div>
+            </div>
+            <p style="font-size:.85rem;line-height:1.5;margin-bottom:20px;opacity:.9">Your designated reviewer is available for a strategy call on Thursday.</p>
+            <button class="btn btn-white w-full btn-sm">Schedule Call</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+// Dashboard Sidebar Logic
+const sidebar = document.getElementById('dash-sidebar');
+const main = document.getElementById('dash-main');
+const toggleBtn = document.getElementById('sidebar-toggle-btn');
+const hamburger = document.getElementById('dash-hamburger');
+const overlay = document.getElementById('sidebar-overlay');
+
+function toggleSidebar() {
+  if (window.innerWidth > 768) {
+    sidebar.classList.toggle('collapsed');
+    main.classList.toggle('collapsed');
+    
+    // Update toggle icon
+    const isCollapsed = sidebar.classList.contains('collapsed');
+    toggleBtn.innerHTML = isCollapsed 
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>';
+  } else {
+    sidebar.classList.toggle('mobile-open');
+    overlay.classList.toggle('show');
+  }
+}
+
+if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+if (hamburger) hamburger.addEventListener('click', toggleSidebar);
+if (overlay) overlay.addEventListener('click', toggleSidebar);
+
+// Handle window resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('show');
+  } else {
+    sidebar.classList.remove('collapsed');
+    main.classList.remove('collapsed');
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pricing – GrantReviewPro</title>
+<meta name="description" content="Transparent pricing for professional grant proposal review. Choose from Basic, Standard, or Premium plans."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<link rel="stylesheet" href="assets/css/nav.css"/>
+<style>
+.pricing-card {
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:36px;
+  transition:all var(--transition);
+  position:relative;
+}
+.pricing-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-xl); }
+.pricing-card.popular {
+  border-color:var(--primary);
+  background:linear-gradient(135deg,rgba(30,58,138,.04),rgba(16,185,129,.04));
+}
+.popular-badge {
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;font-size:.75rem;font-weight:700;padding:5px 18px;
+  border-radius:20px;white-space:nowrap;
+}
+.pricing-price { font-size:3rem;font-weight:900;color:var(--text-primary);line-height:1; }
+.pricing-period { font-size:1rem;color:var(--text-muted);font-weight:400; }
+.feature-row {
+  display:grid;
+  grid-template-columns:2fr repeat(3,1fr);
+  padding:14px 20px;
+  border-bottom:1px solid var(--border-light);
+  align-items:center;
+  font-size:.875rem;
+  gap:12px;
+}
+.feature-row:last-child { border-bottom:none; }
+.feature-row:nth-child(even) { background:var(--bg-2); }
+.check { color:var(--secondary);font-weight:700;text-align:center; }
+.dash { color:var(--text-muted);text-align:center; }
+.addon-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;
+  display:flex;align-items:center;gap:20px;
+  transition:all var(--transition);
+}
+.addon-card:hover { border-color:var(--primary);box-shadow:var(--shadow-md); }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-btn {
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;font-weight:600;text-align:left;color:var(--text-primary);
+  background:none;border:none;cursor:pointer;font-family:inherit;font-size:.95rem;
+}
+.faq-content { padding-bottom:20px;display:none;color:var(--text-secondary);font-size:.9rem;line-height:1.7; }
+.faq-item.open .faq-content { display:block; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); }
+.faq-chevron { transition:transform .3s;flex-shrink:0; }
+</style>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<!-- HERO -->
+<section class="hero" style="min-height:60vh">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=80')"></div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Transparent Pricing</div>
+    <h1 class="font-display">Simple, Honest Pricing</h1>
+    <p>No hidden fees. Choose the review level that matches your proposal complexity and timeline. All plans include secure document sharing and a feedback report.</p>
+    <div class="hero-actions">
+      <a href="signup.html" class="btn btn-secondary btn-lg">Get Started</a>
+      <a href="contact.html" class="btn btn-white btn-lg">Talk to Us First</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING PLANS -->
+<section class="section" id="plans">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Plans</div>
+      <h2 class="section-title">Choose Your Review Plan</h2>
+      <p class="section-desc">All plans include a detailed PDF evaluation report, secure client portal access, and a satisfaction guarantee.</p>
+    </div>
+    <div class="grid-3" style="align-items:start">
+      <!-- Basic -->
+      <div class="pricing-card reveal stagger-1">
+        <div class="section-label" style="margin-bottom:20px">Basic</div>
+        <div class="pricing-price">$199<span class="pricing-period">/review</span></div>
+        <p style="margin:16px 0 28px;font-size:.9rem">Ideal for first-time submitters or organizations with shorter proposals (under 10 pages).</p>
+        <a href="signup.html" class="btn btn-outline w-full" style="justify-content:center;margin-bottom:28px">Get Basic Review</a>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Written evaluation report</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Scoring on 5 key sections</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Top 3 priority revisions</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 7-day turnaround</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem;opacity:.5"><span>✗</span> Inline annotations</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem;opacity:.5"><span>✗</span> Consultation call</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem;opacity:.5"><span>✗</span> Revision round</div>
+        </div>
+      </div>
+      <!-- Standard (Popular) -->
+      <div class="pricing-card popular reveal stagger-2">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="section-label" style="margin-bottom:20px;background:rgba(30,58,138,.15)">Standard</div>
+        <div class="pricing-price">$399<span class="pricing-period">/review</span></div>
+        <p style="margin:16px 0 28px;font-size:.9rem">Best for organizations with proposals up to 25 pages submitting to competitive funders.</p>
+        <a href="signup.html" class="btn btn-primary w-full" style="justify-content:center;margin-bottom:28px">Get Standard Review</a>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Everything in Basic</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Inline annotated PDF</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Scoring on all sections</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 30-min consultation call</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 5-day turnaround</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 1 revision round</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem;opacity:.5"><span>✗</span> Budget review</div>
+        </div>
+      </div>
+      <!-- Premium -->
+      <div class="pricing-card reveal stagger-3">
+        <div class="section-label" style="margin-bottom:20px;background:rgba(16,185,129,.1);color:var(--secondary-dark);border-color:rgba(16,185,129,.2)">Premium</div>
+        <div class="pricing-price">$699<span class="pricing-period">/review</span></div>
+        <p style="margin:16px 0 28px;font-size:.9rem">Full-service review for complex federal, multi-year, or high-stakes proposals over 25 pages.</p>
+        <a href="signup.html" class="btn btn-secondary w-full" style="justify-content:center;margin-bottom:28px">Get Premium Review</a>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Everything in Standard</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Full budget review &amp; analysis</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Logic model review</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 60-min consultation call</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 3-day turnaround</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> 2 revision rounds</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span> Funder research summary</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section bg-2" id="comparison">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Compare</div>
+      <h2 class="section-title">Feature Comparison</h2>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden">
+      <div class="feature-row" style="background:var(--bg-3);font-weight:700">
+        <div>Feature</div>
+        <div style="text-align:center">Basic</div>
+        <div style="text-align:center">Standard</div>
+        <div style="text-align:center">Premium</div>
+      </div>
+      <div class="feature-row"><div>Written Evaluation Report</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div></div>
+      <div class="feature-row"><div>Section Scoring (1–100)</div><div class="check">5 sections</div><div class="check">All</div><div class="check">All</div></div>
+      <div class="feature-row"><div>Inline PDF Annotations</div><div class="dash">—</div><div class="check">✓</div><div class="check">✓</div></div>
+      <div class="feature-row"><div>Consultation Call</div><div class="dash">—</div><div class="check">30 min</div><div class="check">60 min</div></div>
+      <div class="feature-row"><div>Revision Rounds</div><div class="dash">—</div><div class="check">1</div><div class="check">2</div></div>
+      <div class="feature-row"><div>Budget Review</div><div class="dash">—</div><div class="dash">—</div><div class="check">✓</div></div>
+      <div class="feature-row"><div>Logic Model Review</div><div class="dash">—</div><div class="dash">—</div><div class="check">✓</div></div>
+      <div class="feature-row"><div>Funder Research Summary</div><div class="dash">—</div><div class="dash">—</div><div class="check">✓</div></div>
+      <div class="feature-row"><div>Turnaround Time</div><div>7 days</div><div>5 days</div><div>3 days</div></div>
+      <div class="feature-row"><div>Secure Client Portal</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="section" id="addons">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Add-Ons</div>
+      <h2 class="section-title">Enhance Your Review</h2>
+      <p class="section-desc">Customize your review with additional services to fit your specific needs.</p>
+    </div>
+    <div class="grid-2" style="gap:24px">
+      <div class="addon-card reveal stagger-1">
+        <div class="icon-box icon-box-lg" style="flex-shrink:0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h4>Rush Review (48-hour)</h4>
+            <span style="font-weight:800;color:var(--primary);font-size:1.1rem">+$150</span>
+          </div>
+          <p style="font-size:.875rem">Receive your full evaluation within 48 hours for time-sensitive submissions.</p>
+        </div>
+      </div>
+      <div class="addon-card reveal stagger-2">
+        <div class="icon-box icon-box-lg" style="flex-shrink:0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h4>Additional Revision Round</h4>
+            <span style="font-weight:800;color:var(--primary);font-size:1.1rem">+$99</span>
+          </div>
+          <p style="font-size:.875rem">Add an extra revision review round to any plan for complex, competitive proposals.</p>
+        </div>
+      </div>
+      <div class="addon-card reveal stagger-3">
+        <div class="icon-box icon-box-lg" style="flex-shrink:0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h4>Extra Consultation Hour</h4>
+            <span style="font-weight:800;color:var(--primary);font-size:1.1rem">+$125</span>
+          </div>
+          <p style="font-size:.875rem">Book an additional 60-minute strategy call with your reviewer for deeper discussion.</p>
+        </div>
+      </div>
+      <div class="addon-card reveal stagger-4">
+        <div class="icon-box icon-box-lg" style="flex-shrink:0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h4>Funder Research Report</h4>
+            <span style="font-weight:800;color:var(--primary);font-size:1.1rem">+$75</span>
+          </div>
+          <p style="font-size:.875rem">Detailed analysis of your target funder's priorities, past grants, and application preferences.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section bg-2" id="pricing-testimonials">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Client Reviews</div>
+      <h2 class="section-title">Worth Every Dollar</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal stagger-1">
+        <div style="color:var(--accent);margin-bottom:12px">★★★★★</div>
+        <p style="font-size:.9rem;margin-bottom:20px;line-height:1.7">"The Premium review paid for itself 100x over. The $699 investment helped us win a $500K federal grant."</p>
+        <div style="font-weight:600;font-size:.875rem">Linda Park</div>
+        <div style="font-size:.8rem;color:var(--text-muted)">Director, Education Forward</div>
+      </div>
+      <div class="card reveal stagger-2">
+        <div style="color:var(--accent);margin-bottom:12px">★★★★★</div>
+        <p style="font-size:.9rem;margin-bottom:20px;line-height:1.7">"Started with the Basic plan, upgraded to Standard for our next grant. Both were worth it. Incredibly detailed feedback."</p>
+        <div style="font-weight:600;font-size:.875rem">Marcus Webb</div>
+        <div style="font-size:.8rem;color:var(--text-muted)">Grants Coordinator, Hope House</div>
+      </div>
+      <div class="card reveal stagger-3">
+        <div style="color:var(--accent);margin-bottom:12px">★★★★★</div>
+        <p style="font-size:.9rem;margin-bottom:20px;line-height:1.7">"The rush add-on was a lifesaver when we had a 48-hour deadline extension. Received everything on time, quality was excellent."</p>
+        <div style="font-weight:600;font-size:.875rem">Rachel Torres</div>
+        <div style="font-size:.8rem;color:var(--text-muted)">VP Programs, Thrive Together</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="pricing-faq">
+  <div class="container" style="max-width:800px">
+    <div class="text-center mb-48">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Pricing Questions</h2>
+    </div>
+    <div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">
+          <span>Can I upgrade my plan after submitting?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">Yes! You can upgrade your plan at any time before the review is completed. Simply contact us and we'll apply the price difference. Downgrading is also possible before the review begins.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">
+          <span>Do you offer discounts for multiple proposals?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">Yes! Organizations submitting 3 or more proposals within a year receive a 15% discount on all reviews. Contact us for a custom organizational package.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">
+          <span>What's your refund policy?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">We offer a full refund if you cancel within 24 hours of submission, before the review has begun. Once the review is underway, we offer a 50% refund. We stand by our work with a satisfaction guarantee—if you're not satisfied, we'll revise at no charge.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="this.parentElement.classList.toggle('open')">
+          <span>How do I pay?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">We accept all major credit cards, ACH bank transfers, and organizational checks. Payment is due at the time of submission. We can also issue invoices for organizations that require purchase orders.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:linear-gradient(135deg,#0F172A,#1E3A8A)">
+  <div class="container text-center">
+    <h2 class="font-display reveal" style="color:#fff;margin-bottom:16px">Ready to Get Started?</h2>
+    <p class="reveal" style="color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 36px">Choose your plan and submit your proposal today. Satisfaction guaranteed.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="signup.html" class="btn btn-secondary btn-lg">Submit Your Proposal</a>
+      <a href="contact.html" class="btn btn-white btn-lg">Have Questions?</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

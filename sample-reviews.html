@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sample Reviews – GrantReviewPro</title>
+<meta name="description" content="See exactly what a GrantReviewPro evaluation report looks like. Real sample with scoring, annotations, and before/after comparison."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<link rel="stylesheet" href="assets/css/nav.css"/>
+<style>
+.score-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;
+  transition:all var(--transition);
+}
+.score-card:hover { transform:translateY(-3px);box-shadow:var(--shadow-md); }
+.score-num {
+  font-size:2.4rem;font-weight:900;line-height:1;margin-bottom:4px;
+}
+.score-label { font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em; }
+.annotation {
+  border-left:4px solid var(--primary);
+  background:rgba(30,58,138,.05);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+  padding:16px 20px;
+  margin-bottom:12px;
+  position:relative;
+}
+.annotation.strength { border-color:var(--secondary);background:rgba(16,185,129,.05); }
+.annotation.weakness { border-color:var(--accent);background:rgba(245,158,11,.05); }
+.annotation-type {
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:6px;
+}
+.before-after {
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.ba-panel {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;
+}
+.ba-label {
+  font-size:.75rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:16px;padding:4px 12px;
+  border-radius:20px;display:inline-block;
+}
+.ba-before .ba-label { background:rgba(239,68,68,.1);color:#DC2626; }
+.ba-after .ba-label { background:rgba(16,185,129,.1);color:var(--secondary-dark); }
+.text-preview {
+  font-size:.875rem;line-height:1.8;color:var(--text-secondary);
+  font-family:'Georgia',serif;
+}
+.text-preview.strikethrough { text-decoration:line-through;opacity:.6; }
+.reviewer-note {
+  background:linear-gradient(135deg,rgba(30,58,138,.04),rgba(16,185,129,.04));
+  border:1px solid rgba(30,58,138,.12);
+  border-radius:var(--radius-lg);padding:24px;
+  margin-bottom:16px;
+}
+.tab-nav {
+  display:flex;gap:4px;background:var(--surface-2);
+  padding:4px;border-radius:var(--radius-md);margin-bottom:32px;
+  flex-wrap:wrap;
+}
+.tab-btn {
+  flex:1;padding:10px 16px;border-radius:var(--radius-sm);
+  font-size:.875rem;font-weight:600;color:var(--text-secondary);
+  transition:all var(--transition-fast);white-space:nowrap;
+  text-align:center;cursor:pointer;background:none;border:none;
+  font-family:inherit;
+}
+.tab-btn.active { background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm); }
+@media(max-width:768px){ .before-after{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<!-- HERO -->
+<section class="hero" style="min-height:65vh">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80')"></div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Sample Evaluation</div>
+    <h1 class="font-display">See a Real Review in Action</h1>
+    <p>Transparency builds trust. Explore a complete sample evaluation report—exactly what your clients receive—including scoring, annotations, and revision notes.</p>
+    <div class="hero-actions">
+      <a href="signup.html" class="btn btn-secondary btn-lg">Submit Your Proposal</a>
+      <a href="#sample-report" class="btn btn-white btn-lg">Explore the Report</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">84</div><div class="hero-stat-label">Overall Score / 100</div></div>
+      <div><div class="hero-stat-num">7</div><div class="hero-stat-label">Sections Evaluated</div></div>
+      <div><div class="hero-stat-num">23</div><div class="hero-stat-label">Inline Annotations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVALUATION REPORT -->
+<section class="section" id="sample-report">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Evaluation Report</div>
+      <h2 class="section-title">Sample: Youth Workforce Development Grant</h2>
+      <p class="section-desc">Funder: Department of Labor · Grant Amount: $750,000 · Organization: Rising Stars Workforce Initiative</p>
+    </div>
+
+    <!-- Scores overview -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px;margin-bottom:48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:40px">
+        <div>
+          <h3 style="font-size:1.1rem;margin-bottom:4px">Overall Evaluation Score</h3>
+          <p style="font-size:.875rem">Based on Department of Labor WIOA grant criteria</p>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:4rem;font-weight:900;color:var(--primary);line-height:1">84</div>
+          <div style="color:var(--text-muted);font-size:.85rem">out of 100</div>
+          <div class="badge badge-success" style="margin-top:8px">Competitive Score</div>
+        </div>
+      </div>
+      <div class="grid-4" style="gap:16px;margin-bottom:36px">
+        <div class="score-card">
+          <div class="score-num" style="color:var(--primary)">88</div>
+          <div class="progress-bar" style="margin:8px 0"><div class="progress-fill" data-width="88"></div></div>
+          <div class="score-label">Need Statement</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" style="color:var(--secondary)">91</div>
+          <div class="progress-bar" style="margin:8px 0"><div class="progress-fill" data-width="91" style="background:linear-gradient(90deg,var(--secondary),var(--secondary-light))"></div></div>
+          <div class="score-label">Project Design</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" style="color:var(--accent)">75</div>
+          <div class="progress-bar" style="margin:8px 0"><div class="progress-fill" data-width="75" style="background:linear-gradient(90deg,var(--accent),#FBBF24)"></div></div>
+          <div class="score-label">Evaluation Plan</div>
+        </div>
+        <div class="score-card">
+          <div class="score-num" style="color:#7C3AED">82</div>
+          <div class="progress-bar" style="margin:8px 0"><div class="progress-fill" data-width="82" style="background:linear-gradient(90deg,#7C3AED,#A78BFA)"></div></div>
+          <div class="score-label">Org Capacity</div>
+        </div>
+      </div>
+      <div class="grid-2" style="gap:16px">
+        <div class="score-card" style="display:flex;gap:16px;align-items:center">
+          <div class="icon-box" style="flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div><div class="score-num" style="font-size:1.8rem;color:var(--secondary)">86</div><div class="score-label">Budget Narrative</div></div>
+        </div>
+        <div class="score-card" style="display:flex;gap:16px;align-items:center">
+          <div class="icon-box" style="flex-shrink:0;background:rgba(16,185,129,.1);color:var(--secondary-dark)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div><div class="score-num" style="font-size:1.8rem;color:var(--secondary-dark)">79</div><div class="score-label">Sustainability Plan</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs for report sections -->
+    <div data-tabs="report">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="strengths">✓ Strengths</button>
+        <button class="tab-btn" data-tab="weaknesses">⚠ Weaknesses</button>
+        <button class="tab-btn" data-tab="annotations">📝 Annotations</button>
+        <button class="tab-btn" data-tab="priorities">→ Priority Actions</button>
+      </div>
+      <!-- Strengths -->
+      <div data-panel="strengths" class="active">
+        <h3 style="margin-bottom:24px">Key Strengths Identified</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="annotation strength">
+            <div class="annotation-type" style="color:var(--secondary)">✓ Strength – Need Statement (Score: 88)</div>
+            <p style="font-size:.9rem;margin:0">"The problem statement is compelling and data-rich. You effectively document unemployment rates (23.4%) in the target zip codes, citing Census data and local workforce board reports. The connection between structural barriers and program design is explicit and persuasive."</p>
+          </div>
+          <div class="annotation strength">
+            <div class="annotation-type" style="color:var(--secondary)">✓ Strength – Project Design (Score: 91)</div>
+            <p style="font-size:.9rem;margin:0">"The 12-week training model is well-sequenced and grounded in evidence-based practices. The employer partnership letters are exceptional—three Fortune 500 companies committing to interview program graduates significantly strengthens your application."</p>
+          </div>
+          <div class="annotation strength">
+            <div class="annotation-type" style="color:var(--secondary)">✓ Strength – Budget Narrative (Score: 86)</div>
+            <p style="font-size:.9rem;margin:0">"Budget line items are clearly justified and cost-per-participant ($4,200) is competitive with comparable programs. The in-kind match from corporate partners adds significant credibility and demonstrates funder confidence."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Weaknesses -->
+      <div data-panel="weaknesses">
+        <h3 style="margin-bottom:24px">Areas Needing Improvement</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="annotation weakness">
+            <div class="annotation-type" style="color:var(--accent)">⚠ Weakness – Evaluation Plan (Score: 75)</div>
+            <p style="font-size:.9rem;margin:0">"The evaluation plan mentions tracking outcomes but lacks SMART goals. You state you will 'track employment rates' but do not specify a target percentage, baseline, or data collection instrument. Add at least 5 measurable outputs with baseline data."</p>
+          </div>
+          <div class="annotation weakness">
+            <div class="annotation-type" style="color:var(--accent)">⚠ Weakness – Sustainability Plan (Score: 79)</div>
+            <p style="font-size:.9rem;margin:0">"The sustainability section is vague—'we plan to seek continued funding' is insufficient. Identify at least 2 specific alternative funders, describe your earned income potential, and provide a 3-year financial projection that shows reduced grant dependency."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Annotations -->
+      <div data-panel="annotations">
+        <h3 style="margin-bottom:24px">Sample Inline Annotations (Page 4, Section 2)</h3>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px">
+          <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:20px;font-weight:600">ORIGINAL PROPOSAL TEXT – Section 2.1: Target Population</div>
+          <div style="font-family:'Georgia',serif;font-size:.95rem;line-height:1.9;color:var(--text-secondary)">
+            "Our organization serves young adults in the community who face challenges in finding employment. 
+            <span style="background:rgba(245,158,11,.2);border-bottom:2px solid var(--accent);cursor:help;position:relative" title="REVIEWER NOTE: 'Young adults' is undefined. Specify age range (18-24?) per WIOA eligibility.">We will work with approximately 75 participants</span> 
+            over the course of the grant period to help them find jobs in various industries. 
+            <span style="background:rgba(239,68,68,.15);border-bottom:2px solid #EF4444;cursor:help" title="REVIEWER NOTE: 'Various industries' is too vague. Name your 3 target sectors and why they were chosen.">The program will prepare them for careers that pay living wages.</span>
+            Our track record shows we have successfully served this population before and are well-positioned to deliver results."
+          </div>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem">
+              <span style="background:rgba(245,158,11,.2);color:#92400E;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0">NOTE 1</span>
+              <span>'Young adults' needs age definition per WIOA Section 129 eligibility criteria (14–24). State explicitly: "youth ages 18–24."</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem">
+              <span style="background:rgba(239,68,68,.15);color:#B91C1C;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0">NOTE 2</span>
+              <span>Name your 3 target sectors (e.g., healthcare support, tech, skilled trades). Justify selection with local labor market data showing job growth.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Priority Actions -->
+      <div data-panel="priorities">
+        <h3 style="margin-bottom:24px">Top Priority Revision Actions</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;align-items:center">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">1</div>
+            <div>
+              <div style="font-weight:700;margin-bottom:4px">Add SMART Outcome Goals to Evaluation Plan</div>
+              <p style="font-size:.875rem;margin:0">Include 5+ measurable outcomes with baselines, targets, and data sources. Example: "80% of participants will achieve industry-recognized credentials within 16 weeks (baseline: 0)."</p>
+            </div>
+            <span class="badge badge-review" style="flex-shrink:0">High Impact</span>
+          </div>
+          <div style="display:flex;gap:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;align-items:center">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--secondary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">2</div>
+            <div>
+              <div style="font-weight:700;margin-bottom:4px">Strengthen the Sustainability Section</div>
+              <p style="font-size:.875rem;margin:0">Name 3 specific alternative funders, show a financial projection for years 2–4, and describe your social enterprise or fee-for-service model.</p>
+            </div>
+            <span class="badge badge-review" style="flex-shrink:0">High Impact</span>
+          </div>
+          <div style="display:flex;gap:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;align-items:center">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">3</div>
+            <div>
+              <div style="font-weight:700;margin-bottom:4px">Define Target Population More Specifically</div>
+              <p style="font-size:.875rem;margin:0">Add WIOA-eligibility language, specify age range, define "economically disadvantaged," and include demographic data for your service area.</p>
+            </div>
+            <span class="badge badge-pending" style="flex-shrink:0">Medium Impact</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section bg-2" id="before-after">
+  <div class="container">
+    <div class="text-center mb-48">
+      <div class="section-label">Before &amp; After</div>
+      <h2 class="section-title">Actual Text Improvements</h2>
+      <p class="section-desc">See the difference our feedback makes. Real before-and-after text from a revised proposal.</p>
+    </div>
+    <div class="before-after reveal">
+      <div class="ba-panel ba-before">
+        <div class="ba-label">Before Review</div>
+        <div style="margin-bottom:12px;font-size:.8rem;color:var(--text-muted)">Section 3.2 – Evaluation Plan (Original)</div>
+        <div class="text-preview">"We will track the number of participants who complete the program and find employment. We will use surveys to collect data on participant satisfaction. Our staff will monitor progress throughout the program and report results to funders at the end of the grant period."</div>
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <span class="badge" style="background:rgba(239,68,68,.1);color:#DC2626">Score: 58/100</span>
+          <span class="tag">Vague</span><span class="tag">No baselines</span>
+        </div>
+      </div>
+      <div class="ba-panel ba-after">
+        <div class="ba-label">After Revision</div>
+        <div style="margin-bottom:12px;font-size:.8rem;color:var(--text-muted)">Section 3.2 – Evaluation Plan (Revised)</div>
+        <div class="text-preview">"We will measure program effectiveness through five SMART outcomes: (1) 80% of participants will complete all 12 training modules (baseline: 65%); (2) 75% will earn an industry-recognized credential within 16 weeks (baseline: 0%); (3) 70% will secure employment within 90 days (baseline: 42%). Data will be collected via pre/post assessments, Salesforce CRM tracking, and 6-month follow-up surveys conducted by an independent evaluator."</div>
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <span class="badge badge-success">Score: 91/100</span>
+          <span class="tag">SMART goals</span><span class="tag">Baselines</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWER NOTES -->
+<section class="section" id="reviewer-notes">
+  <div class="container" style="max-width:860px">
+    <div class="text-center mb-48">
+      <div class="section-label">Reviewer Notes</div>
+      <h2 class="section-title">Personal Reviewer Commentary</h2>
+      <p class="section-desc">Alongside the formal scoring, every report includes personal notes from your reviewer.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="reviewer-note reveal">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div class="avatar avatar-lg" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff">AC</div>
+          <div>
+            <div style="font-weight:700">Dr. Amanda Clarke, MPA, CGP</div>
+            <div style="font-size:.8rem;color:var(--text-muted)">Lead Reviewer · Review Date: April 28, 2026</div>
+          </div>
+          <span class="badge badge-primary" style="margin-left:auto">General Note</span>
+        </div>
+        <p style="font-size:.9rem;line-height:1.8;font-style:italic">"This proposal shows real promise. The organizational track record is strong and the employer partnerships are a genuine competitive advantage. The primary risk is the evaluation plan—a DOL reviewer will look for SMART outcomes immediately, and the current version will cost you 15–20 points. Prioritize Sections 3 and 5 in your revision. If you implement the changes I've recommended, I'd expect this proposal to be very competitive for this funding opportunity."</p>
+      </div>
+      <div class="reviewer-note reveal">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div class="avatar avatar-lg" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff">AC</div>
+          <div>
+            <div style="font-weight:700">Dr. Amanda Clarke</div>
+            <div style="font-size:.8rem;color:var(--text-muted)">Budget Note</div>
+          </div>
+          <span class="badge badge-secondary" style="margin-left:auto">Budget Note</span>
+        </div>
+        <p style="font-size:.9rem;line-height:1.8;font-style:italic">"The indirect cost rate (12%) is reasonable and within the allowable 15% cap. However, I'd recommend removing the 'office supplies' line item from direct costs—these should be captured under indirect. Also, the benefits rate for part-time staff (28%) seems high; be prepared to justify this during the budget review stage."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="section bg-2" id="download-cta">
+  <div class="container">
+    <div class="highlight-box text-center" style="max-width:700px;margin:0 auto;padding:56px 40px">
+      <div class="icon-box icon-box-lg" style="margin:0 auto 24px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <h2 style="margin-bottom:16px">Download the Full Sample PDF</h2>
+      <p style="max-width:500px;margin:0 auto 32px">Get the complete 18-page sample evaluation report, including all scoring rubrics, annotated PDF pages, and the full revision checklist.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a href="#" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Sample PDF
+        </a>
+        <a href="signup.html" class="btn btn-outline btn-lg">Get Your Own Review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:linear-gradient(135deg,#0F172A,#1E3A8A)">
+  <div class="container text-center">
+    <h2 class="font-display reveal" style="color:#fff;margin-bottom:16px">Ready for Your Proposal Review?</h2>
+    <p class="reveal" style="color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 36px">Submit your proposal and receive a detailed report like the one above within 5 business days.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a href="signup.html" class="btn btn-secondary btn-lg">Submit Your Proposal</a>
+      <a href="pricing.html" class="btn btn-white btn-lg">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+// Tab functionality for sample report
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('[data-tabs]') || btn.closest('.section');
+    const target = btn.dataset.tab;
+    container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    container.querySelectorAll('[data-panel]').forEach(p => {
+      p.classList.toggle('active', p.dataset.panel === target);
+      p.style.display = p.dataset.panel === target ? 'block' : 'none';
+    });
+    btn.classList.add('active');
+  });
+});
+// Show first panel by default
+document.querySelectorAll('[data-panel]').forEach(p => {
+  if (!p.classList.contains('active')) p.style.display = 'none';
+});
+</script>
+</body>
+</html>
