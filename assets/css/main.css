@@ -314,6 +314,30 @@ p {
   border-radius: var(--radius-md);
 }
 
+/* Testimonials */
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .testimonial-author {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
 /* ── Badge ── */
 .badge {
   display: inline-flex;
@@ -783,24 +807,112 @@ logo {
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .container {
-    padding: 0 16px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .section-desc {
+    margin: 0 auto 24px;
+  }
+
+  .flex-between, .flex-center {
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 24px !important;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+    white-space: normal; /* Allow wrapping on small screens */
+    text-align: center;
   }
 
   .btn-lg {
     padding: 14px 28px;
   }
+
+  /* Center grid items */
+  .grid-2 > *, .grid-3 > *, .grid-4 > * {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Center client story author rows */
+  .story-author {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .story-author > div:last-child {
+    text-align: left;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .testimonial-author {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 760px) {
   .container {
-    padding: 0 15px;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .btn {
+    min-width: 260px;
   }
 }
 
 @media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 14px 20px;
+  }
+  
+  .hero-stats {
+    gap: 24px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 16px;
+  }
+
   h1 {
     font-size: 1.9rem;
   }
@@ -808,15 +920,18 @@ logo {
   h2 {
     font-size: 1.6rem;
   }
-}
 
-@media (max-width: 360px) {
+  h3 {
+    font-size: 1.4rem;
+  }
 
-  h1,
-  h2,
-  h3,
-  p {
+  p, .section-desc {
+    font-size: 0.95rem;
     text-align: center;
     word-break: break-word;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
   }
 }

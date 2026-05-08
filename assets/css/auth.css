@@ -5,15 +5,15 @@
 .auth-page {
   min-height: 100vh;
   display: flex;
-  background: var(--bg);
+  background: var(--bg-2);
   overflow: hidden;
 }
 
-/* Left panel */
+/* Left panel — hidden on desktop (web view) */
 .auth-panel-left {
+  display: none;
   flex: 1;
   background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #0B1120 100%);
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 48px;
@@ -28,15 +28,17 @@
 
 .auth-left-brand {
   display: flex; align-items: center; gap: 12px;
-  color: #fff; font-weight: 800; font-size: 1.2rem;
+  color: #fff; font-weight: 800; font-size: 1.1rem;
   position: relative; z-index: 1;
+  letter-spacing: -0.01em;
 }
 .auth-left-brand .logo-icon {
   width: 42px; height: 42px;
-  background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   color: #fff;
+  flex-shrink: 0;
 }
 
 .auth-left-content {
@@ -92,16 +94,39 @@
 .auth-testimonial-author-name { color: #fff; font-weight: 600; font-size: .875rem; }
 .auth-testimonial-author-role { color: rgba(255,255,255,.5); font-size: .75rem; }
 
-/* Right panel */
+/* Right panel — full width since left panel is hidden */
 .auth-panel-right {
-  width: 520px;
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 24px;
   overflow-y: auto;
   position: relative;
 }
+/* Mobile brand (shown when left panel hidden) */
+.auth-mobile-brand {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.auth-mobile-brand .logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
 .auth-top-utils {
   display: flex;
   justify-content: flex-end;
@@ -119,9 +144,53 @@
 }
 .auth-util-btn:hover { color: var(--primary); border-color: var(--primary); }
 
-.auth-form-container { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 380px; margin: 0 auto; width: 100%; }
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 460px;
+  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+}
+
+/* Show mobile brand on all sizes since left panel is removed */
+.auth-mobile-brand { display: flex !important; margin-bottom: 36px; }
 .auth-heading { margin-bottom: 8px; }
 .auth-subheading { color: var(--text-secondary); font-size: .95rem; margin-bottom: 36px; }
+
+/* Terms and Conditions */
+.auth-terms {
+  margin-bottom: 20px;
+}
+.auth-terms label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .85rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+.auth-terms input[type="checkbox"] {
+  accent-color: var(--primary);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Authentication Links */
+.auth-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+.auth-link:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
 
 /* Password field */
 .password-field { position: relative; }
@@ -187,8 +256,22 @@
 
 @media (max-width: 900px) {
   .auth-panel-left { display: none; }
-  .auth-panel-right { width: 100%; padding: 32px 24px; }
+  .auth-panel-right { padding: 32px 20px; }
+  .auth-top-utils { margin-bottom: 16px; }
+}
+@media (max-width: 600px) {
+  .auth-panel-right { padding: 20px 12px; }
+  .auth-form-container {
+    max-width: 100%;
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
 }
 @media (max-width: 480px) {
-  .auth-panel-right { padding: 24px 16px; }
+  .auth-form-container {
+    padding: 24px 16px;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
 }

@@ -244,14 +244,23 @@
   border-bottom: 1px solid var(--border-light);
   font-size: .95rem;
   background: none !important;
+  text-align: center;
 }
 
 .mobile-menu .nav-link:last-of-type {
   border-bottom: none;
 }
 
-.mobile-menu .nav-link:hover {
+.mobile-menu .nav-link:hover,
+.mobile-menu .nav-link.active {
   color: var(--primary);
+  font-weight: 600;
+}
+
+.mobile-menu .nav-link.active {
+  background: var(--surface-2) !important;
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
 }
 
 .mobile-menu-actions {
@@ -267,6 +276,7 @@
   display: flex;
   gap: 12px;
   margin-top: 12px;
+  justify-content: center;
 }
 
 .mobile-menu .nav-icon-btn {
@@ -516,7 +526,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .nav-links {
     display: none;
   }

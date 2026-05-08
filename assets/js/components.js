@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: 'services.html', label: 'Services' },
   { href: 'contact.html', label: 'Contact' },
   { href: 'dashboard.html', label: 'Dashboard' },
-  { href: 'signup.html', label: 'Sign Up' },
 ];
 
 function buildNavbar() {
@@ -37,9 +36,7 @@ function buildNavbar() {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </span>
         </button>
-        <button class="nav-icon-btn" data-rtl-toggle title="Toggle RTL">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H7M21 14H7M21 18H7M3 10l3-3-3-3"/></svg>
-        </button>
+        <button class="nav-icon-btn" data-rtl-toggle title="Toggle RTL" style="font-weight:700;font-size:.7rem">RTL</button>
         <a href="signup.html" class="nav-cta-secondary">Submit Proposal</a>
       </div>
       <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
@@ -48,15 +45,13 @@ function buildNavbar() {
     </div>
   </nav>
   <div class="mobile-menu" id="mobile-menu">
-    ${NAV_LINKS.map(l => `<a href="${l.href}" class="nav-link">${l.label}</a>`).join('')}
+    ${NAV_LINKS.map(l => `<a href="${l.href}" class="nav-link${currentPage === l.href ? ' active' : ''}">${l.label}</a>`).join('')}
     <div class="mobile-menu-actions">
       <a href="signup.html" class="btn btn-primary w-full" style="justify-content:center">Submit Proposal</a>
     </div>
     <div class="mobile-menu-utils">
       <button class="nav-icon-btn" data-theme-toggle><span class="theme-icon"></span></button>
-      <button class="nav-icon-btn" data-rtl-toggle>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H7M21 14H7M21 18H7M3 10l3-3-3-3"/></svg>
-      </button>
+        <button class="nav-icon-btn" data-rtl-toggle title="Toggle RTL" style="font-weight:700;font-size:.7rem">RTL</button>
     </div>
   </div>`;
 

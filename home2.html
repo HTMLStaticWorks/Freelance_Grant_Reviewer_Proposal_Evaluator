@@ -18,6 +18,8 @@
   background: var(--surface);
   position: relative;
   overflow: hidden;
+  /* Prevent ANY content going off screen */
+  max-width: 100vw;
 }
 .hero-v2::before {
   content: '';
@@ -31,35 +33,43 @@
   position: relative;
   z-index: 1;
   max-width: 800px;
+  /* Prevent horizontal overflow */
+  width: 100%;
+  min-width: 0;
 }
 .hero-v2-img {
   position: relative;
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-2xl, 24px);
   overflow: hidden;
-  box-shadow: var(--shadow-2xl);
+  box-shadow: var(--shadow-2xl, 0 25px 60px rgba(0,0,0,.2));
   border: 1px solid var(--border);
+  aspect-ratio: 4/3;
+  min-height: 300px;
+  background: var(--bg-2);
 }
 .floating-card {
   position: absolute;
   background: var(--surface);
-  padding: 16px 20px;
+  padding: 12px 16px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   z-index: 2;
   border: 1px solid var(--border);
+  white-space: nowrap;
 }
-.fc-1 { bottom: 40px; left: -40px; animation: float 6s ease-in-out infinite; }
-.fc-2 { top: 60px; right: -30px; animation: float 8s ease-in-out infinite 1s; }
+/* Desktop: cards slightly overlap the image edges */
+.fc-1 { bottom: 40px; left: -20px; animation: float 6s ease-in-out infinite; }
+.fc-2 { top: 60px; right: -20px; animation: float 8s ease-in-out infinite 1s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
 }
 
-/* Force navbar white on this page as per previous request */
+/* Force navbar white on this page */
 #main-navbar {
   background: var(--surface) !important;
   border-bottom: 1px solid var(--border) !important;
@@ -74,25 +84,57 @@
   background: var(--surface-2) !important;
 }
 
-/* Responsive Overrides */
+/* ── Responsive Overrides ── */
+
+/* Tablet stacked layout */
 @media (max-width: 992px) {
-  .hero-v2 .grid-2 { grid-template-columns: 1fr; gap: 48px !important; }
-  .hero-v2-content { text-align: center; max-width: 100%; }
+  .hero-v2 { padding: 120px 0 80px; }
+  .hero-v2 .grid-2 { grid-template-columns: 1fr !important; gap: 56px !important; }
+  .hero-v2-content { text-align: center; max-width: 100%; margin-bottom: 0; }
   .hero-v2-content .flex-center { justify-content: center !important; }
-  .hero-v2-content div[style*="margin-top:40px"] { justify-content: center !important; }
+  .hero-v2-content div[style*="margin-top:40px"] { justify-content: center !important; flex-wrap: wrap !important; }
+  /* Keep cards inside the image on tablet */
+  .fc-1 { left: 8px; bottom: 8px; transform: scale(0.85); animation: none; }
+  .fc-2 { right: 8px; top: 8px; transform: scale(0.85); animation: none; }
 }
 
+/* Mobile (760px) */
 @media (max-width: 768px) {
-  .hero-v2 { padding: 120px 0 60px; }
-  .fc-1 { left: 0; bottom: 20px; transform: scale(0.9); }
-  .fc-2 { right: 0; top: 20px; transform: scale(0.9); }
+  .hero-v2 { padding: 100px 0 60px; overflow-x: hidden; }
+  /* Keep cards visible but scaled down inside the image */
+  .fc-1 { left: 6px; bottom: 6px; transform: scale(0.78); transform-origin: bottom left; animation: none; }
+  .fc-2 { right: 6px; top: 6px; transform: scale(0.78); transform-origin: top right; animation: none; }
+  .hero-v2-img { min-height: 260px; }
+  /* Prevent button row from overflowing */
+  .hero-v2-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .hero-v2-content .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .hero-v2-content div[style*="margin-top:40px"] {
+    justify-content: center !important;
+  }
 }
 
+/* Small mobile (360px) */
 @media (max-width: 480px) {
-  .hero-v2 h1 { font-size: 2.2rem !important; }
-  .fc-1, .fc-2 { display: none; }
-  .hero-v2-content .flex-center { flex-direction: column; gap: 12px !important; }
-  .hero-v2-content .btn { width: 100%; justify-content: center; }
+  .hero-v2 h1 { font-size: 1.9rem !important; line-height: 1.2 !important; }
+  .hero-v2 p { font-size: 1rem !important; }
+  .hero-v2-img { min-height: 220px; }
+  /* Tiny cards on very small screens */
+  .fc-1 { left: 4px; bottom: 4px; transform: scale(0.68); transform-origin: bottom left; }
+  .fc-2 { right: 4px; top: 4px; transform: scale(0.68); transform-origin: top right; }
+  /* Avatar row */
+  .hero-v2-content div[style*="margin-top:40px"] {
+    gap: 16px !important;
+  }
 }
 </style>
 </head>
@@ -108,13 +150,13 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           Professional Evaluation System
         </div>
-        <h1 class="font-display" style="margin-bottom:24px;line-height:1.1;font-size:3.5rem">Winning Grants Starts With a <span style="color:var(--primary)">Second Look.</span></h1>
+        <h1 class="font-display" style="margin-bottom:24px;line-height:1.1;font-size:clamp(2rem,5vw,3.5rem)">Winning Grants Starts With a <span style="color:var(--primary)">Second Look.</span></h1>
         <p style="font-size:1.15rem;color:var(--text-secondary);margin-bottom:40px;line-height:1.6">Don't leave your funding to chance. Our expert reviewers provide the structured feedback you need to turn a 'good' proposal into a 'funded' one.</p>
-        <div class="flex-center" style="justify-content:flex-start;gap:20px">
+        <div class="flex-center hero-v2-buttons" style="justify-content:flex-start;gap:16px;flex-wrap:wrap;">
           <a href="signup.html" class="btn btn-primary btn-lg">Submit Your Proposal</a>
           <a href="sample-reviews.html" class="btn btn-outline btn-lg">View Sample Review</a>
         </div>
-        <div style="margin-top:40px;display:flex;gap:32px;align-items:center">
+        <div style="margin-top:40px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:flex-start">
           <div style="display:flex;-webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);">
             <div class="avatar" style="border:2px solid var(--surface);background:#eee">JD</div>
             <div class="avatar" style="margin-left:-12px;border:2px solid var(--surface);background:#ddd">MJ</div>
@@ -128,7 +170,7 @@
       </div>
       <div class="reveal-right" style="position:relative">
         <div class="hero-v2-img">
-          <img src="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?w=800&q=80" alt="Professional Review" style="width:100%;display:block"/>
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80" alt="Professional Review" style="width:100%;height:100%;object-fit:cover;display:block"/>
         </div>
         <div class="floating-card fc-1">
           <div class="icon-box" style="background:rgba(16,185,129,.1);color:var(--secondary-dark)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -149,182 +191,210 @@
   </div>
 </section>
 
-<!-- SERVICES GRID -->
-<section class="section">
+<!-- IMPACT STATS -->
+<section class="section-sm" style="background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,var(--secondary) 100%)">
   <div class="container">
-    <div class="grid-3" style="gap:32px">
-      <div class="card reveal stagger-1">
-        <h3 style="margin-bottom:16px">Federal Grants</h3>
-        <p style="font-size:.9rem;margin-bottom:20px">Deep-dive evaluations for complex federal applications (NIH, NSF, Dept of Ed, etc.)</p>
-        <a href="services.html" style="font-weight:600;color:var(--primary);font-size:.85rem;display:flex;align-items:center;gap:4px">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <div class="grid-4" style="gap:24px">
+      <div class="reveal stagger-1" style="text-align:center;color:#fff">
+        <div style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;line-height:1" data-counter data-target="47" data-suffix="M+">$47M+</div>
+        <div style="font-size:.9rem;opacity:.8;margin-top:8px">Funding Secured for Clients</div>
       </div>
-      <div class="card reveal stagger-2">
-        <h3 style="margin-bottom:16px">Foundation Grants</h3>
-        <p style="font-size:.9rem;margin-bottom:20px">Expert reviews tailored to the specific priorities of private and family foundations.</p>
-        <a href="services.html" style="font-weight:600;color:var(--primary);font-size:.85rem;display:flex;align-items:center;gap:4px">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <div class="reveal stagger-2" style="text-align:center;color:#fff">
+        <div style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;line-height:1" data-counter data-target="2800" data-suffix="+">2800+</div>
+        <div style="font-size:.9rem;opacity:.8;margin-top:8px">Proposals Reviewed</div>
       </div>
-      <div class="card reveal stagger-3">
-        <h3 style="margin-bottom:16px">State & Local</h3>
-        <p style="font-size:.9rem;margin-bottom:20px">Reviews focused on community impact and compliance with state-level requirements.</p>
-        <a href="services.html" style="font-weight:600;color:var(--primary);font-size:.85rem;display:flex;align-items:center;gap:4px">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <div class="reveal stagger-3" style="text-align:center;color:#fff">
+        <div style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;line-height:1" data-counter data-target="94" data-suffix="%">94%</div>
+        <div style="font-size:.9rem;opacity:.8;margin-top:8px">Client Success Rate</div>
+      </div>
+      <div class="reveal stagger-4" style="text-align:center;color:#fff">
+        <div style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;line-height:1" data-counter data-target="5">5</div>
+        <div style="font-size:.9rem;opacity:.8;margin-top:8px">Day Turnaround Guarantee</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST INDICATORS -->
-<section class="section-sm bg-2" id="trust">
-  <div class="container">
-    <div class="text-center mb-48">
-      <div class="section-label">Why Choose Us</div>
-      <h2 class="section-title">Trusted by Leading Nonprofits</h2>
-      <p class="section-desc">Our reviewers bring decades of experience evaluating federal, state, and private foundation grants.</p>
-    </div>
-    <div class="grid-4 reveal">
-      <div class="card card-sm text-center stagger-1">
-        <div class="icon-box icon-box-lg" style="margin:0 auto 16px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>15+ Years Experience</h4>
-        <p style="font-size:.9rem">Deep expertise across federal, state, and private foundation grants.</p>
-      </div>
-      <div class="card card-sm text-center stagger-2">
-        <div class="icon-box icon-box-lg" style="margin:0 auto 16px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h4>94% Success Rate</h4>
-        <p style="font-size:.9rem">Clients who implement our feedback see dramatically improved outcomes.</p>
-      </div>
-      <div class="card card-sm text-center stagger-3">
-        <div class="icon-box icon-box-lg" style="margin:0 auto 16px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h4>5-Day Turnaround</h4>
-        <p style="font-size:.9rem">Receive detailed feedback within 5 business days, guaranteed.</p>
-      </div>
-      <div class="card card-sm text-center stagger-4">
-        <div class="icon-box icon-box-lg" style="margin:0 auto 16px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h4>500+ Clients</h4>
-        <p style="font-size:.9rem">From small community orgs to large national nonprofits.</p>
-      </div>
-    </div>
-    <!-- Logo strip -->
-    <div class="mt-48 text-center">
-      <p class="text-muted mb-24">Organizations we've helped secure funding</p>
-      <div class="flex-center gap-32" style="flex-wrap:wrap;opacity:.5">
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text-secondary)">United Way</span>
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text-secondary)">Habitat for Humanity</span>
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text-secondary)">Red Cross</span>
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text-secondary)">Feeding America</span>
-        <span style="font-weight:700;font-size:1.1rem;color:var(--text-secondary)">Boys &amp; Girls Club</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how-it-works">
+<!-- PRICING PREVIEW -->
+<section class="section" id="pricing-preview">
   <div class="container">
     <div class="text-center mb-48">
-      <div class="section-label">Process</div>
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-desc">A simple, transparent 4-step process to get expert feedback on your grant proposal.</p>
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">Simple, Honest Plans</h2>
+      <p class="section-desc">No hidden fees. Choose the review package that fits your proposal's needs.</p>
     </div>
-    <div class="grid-4">
-      <div class="reveal stagger-1" style="text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px">1</div>
-        <h4 style="margin-bottom:10px">Submit Proposal</h4>
-        <p style="font-size:.875rem">Upload your PDF or Word document securely through the client portal. Add notes about your target funder.</p>
+    <div class="grid-3" style="gap:28px;align-items:stretch">
+      <div class="card reveal stagger-1" style="padding:36px 28px">
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:12px">Starter</div>
+        <div style="font-size:2.8rem;font-weight:900;color:var(--text-primary);line-height:1">$199</div>
+        <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:24px">one-time</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Executive Summary Review</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Narrative Scoring (1 section)</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Written Feedback Report</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--text-muted)">–</span> Budget Review</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--text-muted)">–</span> Consultation Call</div>
+        </div>
+        <a href="signup.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
       </div>
-      <div class="reveal stagger-2" style="text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px">2</div>
-        <h4 style="margin-bottom:10px">Expert Review</h4>
-        <p style="font-size:.875rem">A certified reviewer evaluates your proposal against funder criteria, scoring every section thoroughly.</p>
+      <div class="card reveal stagger-2" style="padding:36px 28px;border:2px solid var(--primary);position:relative">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap">Most Popular</div>
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);margin-bottom:12px">Professional</div>
+        <div style="font-size:2.8rem;font-weight:900;color:var(--primary);line-height:1">$399</div>
+        <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:24px">one-time</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Full Proposal Review (all sections)</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Detailed Scoring Rubric</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Budget Narrative Analysis</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--secondary);font-weight:700">✓</span> Inline Annotations</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem"><span style="color:var(--text-muted)">–</span> Consultation Call</div>
+        </div>
+        <a href="signup.html" class="btn btn-primary" style="width:100%;justify-content:center">Choose Professional</a>
       </div>
-      <div class="reveal stagger-3" style="text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--secondary),var(--secondary-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px">3</div>
-        <h4 style="margin-bottom:10px">Receive Feedback</h4>
-        <p style="font-size:.875rem">Download your detailed evaluation report with scores, comments, and actionable recommendations.</p>
+      <div class="card reveal stagger-3" style="padding:36px 28px;background:linear-gradient(135deg,#0F172A,#1E3A8A);border-color:transparent">
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--secondary);margin-bottom:12px">Premium</div>
+        <div style="font-size:2.8rem;font-weight:900;color:#fff;line-height:1">$649</div>
+        <div style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:24px">one-time</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem;color:rgba(255,255,255,.85)"><span style="color:var(--secondary);font-weight:700">✓</span> Everything in Professional</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem;color:rgba(255,255,255,.85)"><span style="color:var(--secondary);font-weight:700">✓</span> 60-min Strategy Call</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem;color:rgba(255,255,255,.85)"><span style="color:var(--secondary);font-weight:700">✓</span> Revised Draft Review</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem;color:rgba(255,255,255,.85)"><span style="color:var(--secondary);font-weight:700">✓</span> Priority 3-Day Turnaround</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.9rem;color:rgba(255,255,255,.85)"><span style="color:var(--secondary);font-weight:700">✓</span> 30-Day Follow-Up Support</div>
+        </div>
+        <a href="signup.html" class="btn btn-secondary" style="width:100%;justify-content:center">Go Premium</a>
       </div>
-      <div class="reveal stagger-4" style="text-align:center">
-        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--secondary-light),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px">4</div>
-        <h4 style="margin-bottom:10px">Revise &amp; Submit</h4>
-        <p style="font-size:.875rem">Apply the feedback, track revisions in your dashboard, and submit a stronger proposal to funders.</p>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:.875rem;color:var(--text-muted)">All plans include a satisfaction guarantee. <a href="pricing.html" style="color:var(--primary);font-weight:600">View full pricing details →</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-2" id="faq">
+  <div class="container" style="max-width:820px">
+    <div class="text-center mb-48">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-desc">Everything you need to know before submitting your proposal.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px" id="faq-list">
+      <div class="faq-item card card-sm reveal stagger-1" style="cursor:pointer;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px" onclick="toggleFaq(this)">
+          <h4 style="font-size:1rem;margin:0">How long does a review take?</h4>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:.3s"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer" style="display:none;padding-top:12px;font-size:.9rem;color:var(--text-secondary);line-height:1.7">Standard reviews are delivered within <strong>5 business days</strong>. Premium plan clients receive priority 3-day turnaround. Rush 48-hour reviews are available upon request for an additional fee.</div>
+      </div>
+      <div class="faq-item card card-sm reveal stagger-2" style="cursor:pointer;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px" onclick="toggleFaq(this)">
+          <h4 style="font-size:1rem;margin:0">What file formats do you accept?</h4>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:.3s"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer" style="display:none;padding-top:12px;font-size:.9rem;color:var(--text-secondary);line-height:1.7">We accept <strong>PDF, Word (.docx), and Google Docs</strong> submissions. Files up to 50MB are supported through our secure client portal. All uploads are encrypted in transit and at rest.</div>
+      </div>
+      <div class="faq-item card card-sm reveal stagger-3" style="cursor:pointer;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px" onclick="toggleFaq(this)">
+          <h4 style="font-size:1rem;margin:0">Is my proposal kept confidential?</h4>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:.3s"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer" style="display:none;padding-top:12px;font-size:.9rem;color:var(--text-secondary);line-height:1.7">Absolutely. All reviewers sign strict <strong>NDAs</strong> and your documents are never shared, published, or used as samples without explicit written consent. We take confidentiality extremely seriously.</div>
+      </div>
+      <div class="faq-item card card-sm reveal stagger-4" style="cursor:pointer;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px" onclick="toggleFaq(this)">
+          <h4 style="font-size:1rem;margin:0">What types of grants do you review?</h4>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:.3s"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer" style="display:none;padding-top:12px;font-size:.9rem;color:var(--text-secondary);line-height:1.7">We review <strong>federal, state, private foundation, and corporate grants</strong> across all nonprofit sectors including education, health, housing, workforce, arts, environment, and social services.</div>
+      </div>
+      <div class="faq-item card card-sm reveal stagger-5" style="cursor:pointer;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px" onclick="toggleFaq(this)">
+          <h4 style="font-size:1rem;margin:0">Do you guarantee funding success?</h4>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:.3s"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-answer" style="display:none;padding-top:12px;font-size:.9rem;color:var(--text-secondary);line-height:1.7">No reviewer can guarantee funding—that decision rests with the funder. However, we <strong>guarantee the quality of our review</strong>: if you're not satisfied, we'll revise the evaluation at no charge.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section bg-2" id="testimonials">
+<!-- REVIEWER SPOTLIGHT -->
+<section class="section" id="reviewer-spotlight">
   <div class="container">
     <div class="text-center mb-48">
-      <div class="section-label">Testimonials</div>
-      <h2 class="section-title">What Nonprofits Are Saying</h2>
-      <p class="section-desc">Real results from real organizations that trusted us with their grant proposals.</p>
+      <div class="section-label">Our Experts</div>
+      <h2 class="section-title">Meet Your Reviewers</h2>
+      <p class="section-desc">Certified grant professionals with real funder-panel experience.</p>
     </div>
-    <div class="grid-3">
-      <div class="card reveal stagger-1">
-        <div style="display:flex;gap:4px;margin-bottom:16px;color:var(--accent)">
-          ★★★★★
-        </div>
-        <p style="font-size:.95rem;line-height:1.7;margin-bottom:24px">"After implementing the reviewer's feedback, we secured a $150,000 federal grant that we'd failed to win twice before. The detailed scoring system made it crystal clear where we needed to improve."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div class="avatar" style="background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff">MJ</div>
-          <div>
-            <div style="font-weight:700;font-size:.9rem">Maria Johnson</div>
-            <div style="font-size:.8rem;color:var(--text-muted)">Executive Director, Community Bridges</div>
-          </div>
+    <div class="grid-3" style="gap:28px">
+      <div class="card reveal stagger-1" style="text-align:center;padding:40px 28px">
+        <div class="avatar avatar-lg" style="margin:0 auto 16px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;width:80px;height:80px;font-size:1.6rem">AC</div>
+        <h3 style="font-size:1.1rem;margin-bottom:4px">Dr. Amanda Clarke</h3>
+        <div style="font-size:.8rem;color:var(--secondary);font-weight:600;margin-bottom:12px">Lead Reviewer · MPA, CGP</div>
+        <p style="font-size:.875rem;margin-bottom:20px">Former federal panel reviewer for Dept. of Education & HHS. 15+ years in nonprofit grant evaluation and capacity building.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+          <span class="tag">Federal</span><span class="tag">Education</span><span class="tag">Health</span>
         </div>
       </div>
-      <div class="card reveal stagger-2" style="border:2px solid var(--secondary);position:relative">
-        <div style="position:absolute;top:-12px;left:24px;background:var(--secondary);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px">Featured Review</div>
-        <div style="display:flex;gap:4px;margin-bottom:16px;color:var(--accent)">★★★★★</div>
-        <p style="font-size:.95rem;line-height:1.7;margin-bottom:24px">"The turnaround time was incredible—we received our full evaluation report in just 4 days. The consultant's notes were specific, actionable, and showed a deep understanding of our mission area."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div class="avatar" style="background:linear-gradient(135deg,var(--secondary),var(--secondary-light));color:#fff">DR</div>
-          <div>
-            <div style="font-weight:700;font-size:.9rem">David Rodriguez</div>
-            <div style="font-size:.8rem;color:var(--text-muted)">Grants Manager, Urban Health Alliance</div>
-          </div>
+      <div class="card reveal stagger-2" style="text-align:center;padding:40px 28px">
+        <div class="avatar avatar-lg" style="margin:0 auto 16px;background:linear-gradient(135deg,var(--secondary),var(--secondary-light));color:#fff;width:80px;height:80px;font-size:1.6rem">JD</div>
+        <h3 style="font-size:1.1rem;margin-bottom:4px">John Dorsey</h3>
+        <div style="font-size:.8rem;color:var(--secondary);font-weight:600;margin-bottom:12px">Senior Reviewer · GPC</div>
+        <p style="font-size:.875rem;margin-bottom:20px">Specializes in workforce development and social services grants. Previously a program officer at a major community foundation.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+          <span class="tag">Workforce</span><span class="tag">Foundation</span><span class="tag">Housing</span>
         </div>
       </div>
-      <div class="card reveal stagger-3">
-        <div style="display:flex;gap:4px;margin-bottom:16px;color:var(--accent)">★★★★★</div>
-        <p style="font-size:.95rem;line-height:1.7;margin-bottom:24px">"We've used GrantReviewPro for 6 proposals over two years. Every review has been thorough and helped us improve. Our funding success rate went from 30% to 78% in that period."</p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div class="avatar" style="background:linear-gradient(135deg,#7C3AED,#A78BFA);color:#fff">SL</div>
-          <div>
-            <div style="font-weight:700;font-size:.9rem">Sarah Liu</div>
-            <div style="font-size:.8rem;color:var(--text-muted)">Development Director, Future Scholars</div>
-          </div>
+      <div class="card reveal stagger-3" style="text-align:center;padding:40px 28px">
+        <div class="avatar avatar-lg" style="margin:0 auto 16px;background:linear-gradient(135deg,#7C3AED,#A78BFA);color:#fff;width:80px;height:80px;font-size:1.6rem">LK</div>
+        <h3 style="font-size:1.1rem;margin-bottom:4px">Lisa Kim</h3>
+        <div style="font-size:.8rem;color:var(--secondary);font-weight:600;margin-bottom:12px">Associate Reviewer · MNM</div>
+        <p style="font-size:.875rem;margin-bottom:20px">Expert in arts, environmental, and corporate-giving grants. 10 years managing development teams at national nonprofits.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+          <span class="tag">Arts</span><span class="tag">Environment</span><span class="tag">Corporate</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section" id="cta" style="background:linear-gradient(135deg,#0F172A,#1E3A8A)">
-  <div class="container text-center">
-    <div class="hero-badge" style="justify-content:center;margin-bottom:24px">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      No commitment required
+<!-- SPLIT CTA BANNER -->
+<section class="section" id="cta2" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="grid-2 reveal" style="align-items:center;gap:48px;background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:var(--radius-xl);padding:64px 56px;overflow:hidden;position:relative">
+      <div style="position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(16,185,129,.08);pointer-events:none"></div>
+      <div>
+        <div class="hero-badge" style="margin-bottom:20px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          From $199 · No commitment
+        </div>
+        <h2 class="font-display" style="color:#fff;margin-bottom:16px;font-size:clamp(1.6rem,3vw,2.4rem)">Stop Guessing. Start Winning.</h2>
+        <p style="color:rgba(255,255,255,.7);font-size:1rem;line-height:1.7;margin-bottom:0">Your next proposal could be the one that changes your organization's future. Get expert eyes on it before you submit.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <a href="signup.html" class="btn btn-secondary btn-lg" style="justify-content:center">Submit Your Proposal</a>
+        <a href="sample-reviews.html" class="btn" style="background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3);justify-content:center;padding:16px 36px;font-size:1rem">See a Sample Review</a>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.4);text-align:center;margin:0">Satisfaction guaranteed · Delivered in 5 days</p>
+      </div>
     </div>
-    <h2 class="font-display reveal" style="color:#fff;margin-bottom:20px">Ready to Strengthen Your Proposal?</h2>
-    <p class="reveal" style="color:rgba(255,255,255,.7);max-width:540px;margin:0 auto 40px;font-size:1.05rem">Submit your proposal today and receive expert feedback within 5 business days. Join 500+ nonprofits who have improved their funding success.</p>
-    <div class="hero-actions" style="justify-content:center">
-      <a href="signup.html" class="btn btn-secondary btn-lg">Start Your Review – From $199</a>
-      <a href="contact.html" class="btn btn-white btn-lg">Schedule a Free Call</a>
-    </div>
-    <p class="reveal" style="margin-top:24px;font-size:.85rem;color:rgba(255,255,255,.4)">Satisfaction guaranteed · Secure document sharing · Expert reviewers</p>
   </div>
-</section>
 
 <div id="footer-placeholder"></div>
 <script src="assets/js/components.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector('.faq-icon');
+  const isOpen = answer.style.display === 'block';
+  // Close all
+  document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = '');
+  // Open clicked if it was closed
+  if (!isOpen) {
+    answer.style.display = 'block';
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
 </body>
 </html>

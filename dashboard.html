@@ -10,6 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/css/main.css"/>
 <link rel="stylesheet" href="assets/css/dashboard.css"/>
+<style>
+/* Prevent horizontal overflow at all mobile sizes */
+html, body { max-width: 100vw; overflow-x: hidden; }
+.p-24 { padding: 24px; }
+</style>
 </head>
 <body class="bg-2">
 
@@ -94,6 +99,8 @@
         <button class="dash-icon-btn" data-theme-toggle title="Toggle theme">
           <span class="theme-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
         </button>
+        
+        <button class="dash-icon-btn" data-rtl-toggle title="Toggle RTL" style="font-weight:700;font-size:.7rem">RTL</button>
         
         <button class="dash-icon-btn" title="Notifications">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
@@ -181,68 +188,7 @@
         </div>
       </div>
 
-      <div class="grid-2" style="grid-template-columns: 2fr 1fr; gap:24px; align-items: flex-start">
-        <!-- Recent Proposals -->
-        <div class="card" style="padding:0; overflow:hidden">
-          <div class="flex-between p-24">
-            <h3 style="font-size:1.1rem">Recent Proposals</h3>
-            <a href="#" class="btn btn-sm btn-outline">View All</a>
-          </div>
-          
-          <div class="proposal-table">
-            <div class="proposal-table-header">
-              <div>Proposal Name</div>
-              <div>Status</div>
-              <div>Submitted</div>
-              <div>Score</div>
-              <div>Action</div>
-            </div>
-            
-            <div class="proposal-row">
-              <div>
-                <div class="proposal-title">Youth Workforce Initiative</div>
-                <div class="proposal-org">Department of Labor (ETA)</div>
-              </div>
-              <div><span class="badge badge-success">Reviewed</span></div>
-              <div class="proposal-org">Oct 12, 2026</div>
-              <div style="font-weight:700;color:var(--secondary-dark)">84/100</div>
-              <div><button class="btn btn-sm btn-secondary">Report</button></div>
-            </div>
-            
-            <div class="proposal-row">
-              <div>
-                <div class="proposal-title">Community Health Outreach</div>
-                <div class="proposal-org">Robert Wood Johnson Fdn</div>
-              </div>
-              <div><span class="badge" style="background:rgba(245,158,11,.1);color:#B45309">In Progress</span></div>
-              <div class="proposal-org">Oct 15, 2026</div>
-              <div style="font-weight:700;color:var(--text-muted)">--</div>
-              <div><button class="btn btn-sm btn-outline" disabled>Pending</button></div>
-            </div>
-            
-            <div class="proposal-row">
-              <div>
-                <div class="proposal-title">After-School Literacy Program</div>
-                <div class="proposal-org">Local Education Foundation</div>
-              </div>
-              <div><span class="badge badge-success">Reviewed</span></div>
-              <div class="proposal-org">Sep 28, 2026</div>
-              <div style="font-weight:700;color:var(--secondary-dark)">91/100</div>
-              <div><button class="btn btn-sm btn-secondary">Report</button></div>
-            </div>
-
-            <div class="proposal-row">
-              <div>
-                <div class="proposal-title">Sustainable Urban Farming</div>
-                <div class="proposal-org">USDA NIFA</div>
-              </div>
-              <div><span class="badge badge-success">Reviewed</span></div>
-              <div class="proposal-org">Sep 20, 2026</div>
-              <div style="font-weight:700;color:var(--primary)">78/100</div>
-              <div><button class="btn btn-sm btn-secondary">Report</button></div>
-            </div>
-          </div>
-        </div>
+      <div class="grid-1" style="gap:24px">
 
         <!-- Quick Actions & Help -->
         <div style="display:flex; flex-direction:column; gap:24px">
@@ -299,7 +245,7 @@
                 <div style="font-size:.75rem;opacity:.8">Senior Grant Reviewer</div>
               </div>
             </div>
-            <p style="font-size:.85rem;line-height:1.5;margin-bottom:20px;opacity:.9">Your designated reviewer is available for a strategy call on Thursday.</p>
+            <p style="font-size:.85rem;line-height:1.5;margin-bottom:20px;opacity:.9;color:#fff">Your designated reviewer is available for a strategy call on Thursday.</p>
             <button class="btn btn-white w-full btn-sm">Schedule Call</button>
           </div>
         </div>

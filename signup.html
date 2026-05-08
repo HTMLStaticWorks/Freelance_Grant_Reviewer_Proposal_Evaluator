@@ -43,18 +43,22 @@
 
   <!-- Right Panel -->
   <div class="auth-panel-right">
+    <div class="auth-mobile-brand">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <span>GrantReview<span style="color:var(--secondary)">Pro</span></span>
+    </div>
     <div class="auth-top-utils">
       <button class="auth-util-btn" data-theme-toggle title="Toggle theme">
         <span class="theme-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
       </button>
-      <button class="auth-util-btn" data-rtl-toggle title="Toggle RTL">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H7M21 14H7M21 18H7M3 10l3-3-3-3"/></svg>
-      </button>
+      <button class="auth-util-btn" data-rtl-toggle title="Toggle RTL" style="font-weight:700;font-size:.7rem">RTL</button>
     </div>
     <div class="auth-form-container">
       <div style="margin-bottom:28px">
         <h1 class="auth-heading" style="font-size:1.8rem">Create your free account</h1>
-        <p class="auth-subheading">Already have an account? <a href="login.html">Sign in</a></p>
+        <p class="auth-subheading">Already have an account? <a href="login.html" class="auth-link">Sign in</a></p>
       </div>
       <!-- Progress steps -->
       <div class="auth-steps" style="margin-bottom:28px">
@@ -106,19 +110,25 @@
             <div id="pw-label" style="font-size:.75rem;color:var(--text-muted);margin-top:4px">Enter a password</div>
           </div>
         </div>
-        <div style="margin-bottom:20px">
-          <label style="display:flex;align-items:flex-start;gap:10px;font-size:.85rem;cursor:pointer;color:var(--text-secondary)">
-            <input type="checkbox" required style="accent-color:var(--primary);margin-top:2px;flex-shrink:0"/>
-            I agree to the <a href="#" style="color:var(--primary);font-weight:600">&nbsp;Terms of Service</a> &nbsp;and&nbsp; <a href="#" style="color:var(--primary);font-weight:600">Privacy Policy</a>
+        <div class="auth-terms">
+          <label>
+            <input type="checkbox" required />
+            <span>I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a></span>
           </label>
         </div>
         <button type="submit" class="btn btn-primary w-full btn-lg" style="justify-content:center;margin-bottom:20px">Create Account</button>
       </form>
-      <div class="auth-divider">or sign up with</div>
-      <button class="social-btn" onclick="alert('Google sign-up coming soon!')">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-        Continue with Google
-      </button>
+      <div class="grid-2" style="gap:12px">
+        <button class="social-btn" onclick="alert('Google sign-up coming soon!')">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google
+        </button>
+        <button class="social-btn" onclick="alert('Apple sign-up coming soon!')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2.002-.156-3.312 1.078-4.303 1.078zm2.415-3.989c.896-1.091 1.506-2.61 1.339-4.13-1.312.052-2.909.87-3.844 1.974-.831.961-1.571 2.506-1.378 4.013 1.468.117 2.987-.766 3.883-1.857z"/></svg>
+          Apple
+        </button>
+      </div>
+      <p class="auth-footer-text">Already have an account? <a href="login.html" class="auth-link">Sign in</a></p>
     </div>
   </div>
 </div>
