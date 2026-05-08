@@ -261,8 +261,14 @@
 
 @media (max-width: 900px) {
   .auth-panel-left { display: none; }
-  .auth-panel-right { padding: 32px 20px; }
-  .auth-top-utils { margin-bottom: 16px; }
+  .auth-panel-right { padding: 80px 20px 40px; }
+  .auth-top-utils { 
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    margin-bottom: 0;
+  }
+  .auth-mobile-brand { margin-top: 40px; margin-bottom: 40px; }
 }
 @media (max-width: 600px) {
   .auth-panel-right { padding: 20px 12px; }
