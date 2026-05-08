@@ -6,9 +6,9 @@ const NAV_LINKS = [
   { href: 'index.html', label: 'Home' },
   { href: 'home2.html', label: 'Home 2' },
   { href: 'about.html', label: 'About' },
+  { href: 'services.html', label: 'Services' },
   { href: 'pricing.html', label: 'Pricing' },
   { href: 'sample-reviews.html', label: 'Sample Reviews' },
-  { href: 'services.html', label: 'Services' },
   { href: 'contact.html', label: 'Contact' },
   { href: 'dashboard.html', label: 'Dashboard' },
 ];
@@ -24,10 +24,14 @@ function buildNavbar() {
   <nav class="navbar" id="main-navbar">
     <div class="navbar-inner">
       <a href="index.html" class="nav-logo">
-        <div class="logo-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="logo-icon" style="position:relative">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="position:relative;z-index:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <div class="sparkles" style="position:absolute;inset:0;pointer-events:none">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" style="position:absolute;top:-4px;right:-4px"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
+            <svg width="6" height="6" viewBox="0 0 24 24" fill="var(--accent)" style="position:absolute;bottom:2px;left:-3px;opacity:.8"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
+          </div>
         </div>
-        <span>GrantReview<span style="color:var(--secondary)">Pro</span></span>
+        <span>GrantReview<span style="color:var(--secondary)">Pro</span><span style="color:var(--accent)">.</span></span>
       </a>
       <div class="nav-links">${links}</div>
       <div class="nav-right">
@@ -69,10 +73,13 @@ function buildFooter() {
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="nav-logo" style="color:var(--text-primary);margin-bottom:16px">
-            <div class="logo-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div class="logo-icon" style="position:relative">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="position:relative;z-index:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <div class="sparkles" style="position:absolute;inset:0;pointer-events:none">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)" style="position:absolute;top:-4px;right:-4px"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg>
+              </div>
             </div>
-            <span>GrantReview<span style="color:var(--secondary)">Pro</span></span>
+            <span>GrantReview<span style="color:var(--secondary)">Pro</span><span style="color:var(--accent)">.</span></span>
           </div>
           <p>Expert grant proposal review services helping nonprofits secure funding with professional, structured feedback and guidance.</p>
           <div class="footer-social">

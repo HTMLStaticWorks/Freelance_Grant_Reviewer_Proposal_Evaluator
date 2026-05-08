@@ -236,10 +236,23 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: var(--sidebar-w);
   z-index: 100;
   gap: 16px;
+  transition: left var(--transition);
+}
+
+.dash-main.collapsed .dash-header {
+  left: var(--sidebar-w-collapsed);
+}
+
+@media (max-width: 768px) {
+  .dash-header {
+    left: 0;
+  }
 }
 
 .dash-header-left {
@@ -298,6 +311,7 @@
 .dash-content {
   flex: 1;
   padding: 32px 24px;
+  margin-top: var(--dash-header-h);
 }
 
 /* Stats grid */
