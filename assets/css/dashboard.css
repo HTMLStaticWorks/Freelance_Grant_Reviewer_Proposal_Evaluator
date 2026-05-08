@@ -28,7 +28,6 @@
   bottom: 0;
   z-index: 200;
   transition: width var(--transition), transform var(--transition);
-  overflow: hidden;
 }
 
 .dash-sidebar.collapsed {
@@ -54,7 +53,6 @@
   font-size: 1rem;
   color: var(--text-primary);
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .sidebar-logo .logo-icon {
