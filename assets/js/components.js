@@ -41,7 +41,7 @@ function buildNavbar() {
           </span>
         </button>
         <button class="nav-icon-btn" data-rtl-toggle title="Toggle RTL" style="font-weight:700;font-size:.7rem">RTL</button>
-        <a href="signup.html" class="nav-cta-secondary">Submit Proposal</a>
+        <a href="signup.html" class="nav-cta-primary">Submit Proposal</a>
       </div>
       <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
         <span></span><span></span><span></span>

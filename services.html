@@ -12,11 +12,25 @@
 <style>
 .service-big-card {
   background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius-xl);padding:40px;
-  display:grid;grid-template-columns:auto 1fr;gap:32px;
-  align-items:start;transition:all var(--transition);
+  border-radius:var(--radius-xl);padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  overflow:hidden;
+  align-items:stretch;transition:all var(--transition);
 }
 .service-big-card:hover { box-shadow:var(--shadow-lg);border-color:var(--primary-light); }
+.service-big-card-content {
+  padding:48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.service-big-card-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  min-height:360px;
+  display:block;
+}
 .process-step {
   display:flex;gap:24px;padding:32px 0;
   border-bottom:1px solid var(--border);
@@ -49,7 +63,11 @@
 .faq-item.open .faq-content { display:block; }
 .faq-item.open .faq-chevron { transform:rotate(180deg); }
 .faq-chevron { transition:transform .3s;flex-shrink:0; }
-@media(max-width:768px){ .service-big-card{grid-template-columns:1fr;} }
+@media(max-width:768px){ 
+  .service-big-card{grid-template-columns:1fr !important;} 
+  .service-big-card-content { padding:32px; }
+  .service-big-card-img { min-height:260px; height:260px; }
+}
 </style>
 </head>
 <body>
@@ -78,89 +96,105 @@
       <h2 class="section-title">What We Offer</h2>
       <p class="section-desc">Four core service areas designed to strengthen every dimension of your grant proposal.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <!-- Full Proposal Review -->
       <div class="service-big-card reveal stagger-1">
-        <div class="icon-box icon-box-lg" style="background:rgba(30,58,138,.1);color:var(--primary)">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-            <h3 style="font-size:1.3rem">Full Proposal Review</h3>
+        <div class="service-big-card-content">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+            <div class="icon-box" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(30,58,138,.1);color:var(--primary)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 style="font-size:1.3rem;margin:0">Full Proposal Review</h3>
             <span class="badge badge-primary">Most Comprehensive</span>
           </div>
-          <p style="margin-bottom:20px">Our flagship service. We evaluate your entire proposal—narrative, budget, evaluation plan, organizational capacity, and attachments—against the funder's stated criteria. You receive a scored evaluation report with detailed feedback on every section.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Complete section-by-section scoring</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Strengths &amp; weaknesses analysis</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Prioritized revision roadmap</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Funder criteria alignment check</div>
+          <p style="margin-bottom:20px;font-size:.95rem;line-height:1.7">Our flagship service. We evaluate your entire proposal—narrative, budget, evaluation plan, organizational capacity, and attachments—against the funder's stated criteria. You receive a scored evaluation report with detailed feedback on every section.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Complete section-by-section scoring</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Strengths &amp; weaknesses analysis</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Prioritized revision roadmap</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Funder criteria alignment check</div>
           </div>
-          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
             <a href="pricing.html" class="btn btn-primary">From $199</a>
             <a href="signup.html" class="btn btn-ghost">Submit Proposal →</a>
           </div>
         </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Full Proposal Review" class="service-big-card-img"/>
+        </div>
       </div>
 
+      <!-- Section-by-Section Feedback -->
       <div class="service-big-card reveal stagger-2">
-        <div class="icon-box icon-box-lg" style="background:rgba(16,185,129,.1);color:var(--secondary-dark)">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        </div>
         <div>
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-            <h3 style="font-size:1.3rem">Section-by-Section Feedback</h3>
+          <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80" alt="Section-by-Section Feedback" class="service-big-card-img"/>
+        </div>
+        <div class="service-big-card-content">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+            <div class="icon-box" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(16,185,129,.1);color:var(--secondary-dark)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <h3 style="font-size:1.3rem;margin:0">Section-by-Section Feedback</h3>
             <span class="badge badge-secondary">Targeted</span>
           </div>
-          <p style="margin-bottom:20px">When you know which sections need work, we dive deep into specific areas—narrative quality, logic model development, evaluation frameworks, or budget justification. Inline annotations highlight exactly where and how to improve.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Inline PDF annotations</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Specific rewrite suggestions</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Examples and model language</div>
+          <p style="margin-bottom:20px;font-size:.95rem;line-height:1.7">When you know which sections need work, we dive deep into specific areas—narrative quality, logic model development, evaluation frameworks, or budget justification. Inline annotations highlight exactly where and how to improve.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Inline PDF annotations</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Specific rewrite suggestions</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Examples and model language</div>
           </div>
-          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
             <a href="pricing.html" class="btn btn-secondary">From $149/section</a>
             <a href="signup.html" class="btn btn-ghost">Get Started →</a>
           </div>
         </div>
       </div>
 
+      <!-- Editing & Proofreading -->
       <div class="service-big-card reveal stagger-3">
-        <div class="icon-box icon-box-lg" style="background:rgba(245,158,11,.1);color:#92400E">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-        </div>
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-            <h3 style="font-size:1.3rem">Editing &amp; Proofreading</h3>
+        <div class="service-big-card-content">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+            <div class="icon-box" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(245,158,11,.1);color:#92400E">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <h3 style="font-size:1.3rem;margin:0">Editing &amp; Proofreading</h3>
             <span class="badge badge-accent">Polish</span>
           </div>
-          <p style="margin-bottom:20px">Before final submission, our editing service ensures your proposal is polished, clear, and error-free. We improve sentence-level clarity, consistency of voice, and professional tone—without changing your content or intent.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Grammar &amp; style editing</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Clarity &amp; conciseness</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Track-changes Word document</div>
+          <p style="margin-bottom:20px;font-size:.95rem;line-height:1.7">Before final submission, our editing service ensures your proposal is polished, clear, and error-free. We improve sentence-level clarity, consistency of voice, and professional tone—without changing your content or intent.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Grammar &amp; style editing</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Clarity &amp; conciseness</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Track-changes Word document</div>
           </div>
-          <div style="margin-top:20px">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
             <a href="pricing.html" class="btn btn-outline">From $0.03/word</a>
           </div>
         </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80" alt="Editing & Proofreading" class="service-big-card-img"/>
+        </div>
       </div>
 
+      <!-- Consultation Calls -->
       <div class="service-big-card reveal stagger-4">
-        <div class="icon-box icon-box-lg" style="background:rgba(139,92,246,.1);color:#7C3AED">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
         <div>
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
-            <h3 style="font-size:1.3rem">Consultation Calls</h3>
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="Consultation Calls" class="service-big-card-img"/>
+        </div>
+        <div class="service-big-card-content">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+            <div class="icon-box" style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(139,92,246,.1);color:#7C3AED">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.4a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 style="font-size:1.3rem;margin:0">Consultation Calls</h3>
             <span class="badge badge-review">Strategic</span>
           </div>
-          <p style="margin-bottom:20px">Live strategy sessions where we walk through findings together, answer questions, and develop a revision plan. Ideal for complex federal grants, first-time applicants, or organizations rebuilding a failed proposal.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Video or phone call</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>Meeting notes &amp; action items</div>
-            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary)">✓</span>30 or 60-minute sessions</div>
+          <p style="margin-bottom:20px;font-size:.95rem;line-height:1.7">Live strategy sessions where we walk through findings together, answer questions, and develop a revision plan. Ideal for complex federal grants, first-time applicants, or organizations rebuilding a failed proposal.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Video or phone call</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> Meeting notes &amp; action items</div>
+            <div style="display:flex;gap:8px;align-items:center;font-size:.875rem"><span style="color:var(--secondary);font-weight:700">✓</span> 30 or 60-minute sessions</div>
           </div>
-          <div style="margin-top:20px">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
             <a href="contact.html" class="btn btn-ghost">Book a Call →</a>
           </div>
         </div>
